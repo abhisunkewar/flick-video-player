@@ -54,54 +54,77 @@ class FlickPortraitControls extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  FlickVideoProgressBar(
-                    flickProgressBarSettings: progressBarSettings,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 2.0,
+                      right: 2.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: Icon(
+                            Icons.close,
+                            color: Colors.white,
+                            size: 28.0,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      FlickPlayToggle(
-                        size: iconSize,
-                      ),
-                      SizedBox(
-                        width: iconSize / 2,
-                      ),
-                      FlickSoundToggle(
-                        size: iconSize,
-                      ),
-                      SizedBox(
-                        width: iconSize / 2,
+                      FlickVideoProgressBar(
+                        flickProgressBarSettings: progressBarSettings,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          FlickCurrentPosition(
-                            fontSize: fontSize,
+                          FlickPlayToggle(
+                            size: iconSize,
                           ),
-                          FlickAutoHideChild(
-                            child: Text(
-                              ' / ',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: fontSize),
-                            ),
+                          SizedBox(
+                            width: iconSize / 2,
                           ),
-                          FlickTotalDuration(
-                            fontSize: fontSize,
+                          FlickSoundToggle(
+                            size: iconSize,
+                          ),
+                          SizedBox(
+                            width: iconSize / 2,
+                          ),
+                          Row(
+                            children: <Widget>[
+                              FlickCurrentPosition(
+                                fontSize: fontSize,
+                              ),
+                              FlickAutoHideChild(
+                                child: Text(
+                                  ' / ',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: fontSize),
+                                ),
+                              ),
+                              FlickTotalDuration(
+                                fontSize: fontSize,
+                              ),
+                            ],
+                          ),
+                          Expanded(
+                            child: Container(),
+                          ),
+                          FlickSubtitleToggle(
+                            size: iconSize,
+                          ),
+                          SizedBox(
+                            width: iconSize / 2,
                           ),
                         ],
-                      ),
-                      Expanded(
-                        child: Container(),
-                      ),
-                      FlickSubtitleToggle(
-                        size: iconSize,
-                      ),
-                      SizedBox(
-                        width: iconSize / 2,
-                      ),
-                      FlickFullScreenToggle(
-                        size: iconSize,
                       ),
                     ],
                   ),
